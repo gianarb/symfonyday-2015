@@ -1,0 +1,6 @@
+{
+  "name": "corley-reveal",
+  "dependencies": {
+    "corley-presenter": "*"
+  }
+}

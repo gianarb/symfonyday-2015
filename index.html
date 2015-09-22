@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>reveal.js - The HTML Presentation Framework</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/corley/corley.css" id="theme">
+		<link rel="stylesheet" href="css/theme/corley/font-awesome.css">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+
+        <style>
+            .zf {
+                color: #68B604;
+            }
+            .doctrine {
+                color: #FC6A31;
+            }
+        </style>
+
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h2>Doctrine\Cache</h2>
+                    <h3>The <strong>knowledge</strong> is power</h3>
+					<p>
+						SymfonyDay 2015
+					</p>
+				</section>
+
+				<section data-background="#fff">
+					<h2>Who I am?</h2>
+					<h2 class="fragment" data-fragment-index="1">Gianluca Arbezzano</h2>
+                    <h4 class="fragment" data-fragment-index="1"><i class="fa fa-twitter"></i><i class="fa fa-github"></i>@gianarb</h4>
+					<h4 class="fragment" data-fragment-index="2">from CorleyCloud</h4>
+					<h4 class="fragment" data-fragment-index="2"><img src="assets/corley.png" alt="" class="flat" ></h4>
+				</section>
+
+                <section data-background="assets/evil.jpg">
+                    <div  style="">
+                        <h1 style="font-size:4.5em;text-shadow:0px 0px 2px #000">I'm the Enemy</h1>
+                        <h3  class="fragment shadow">Member of <span class="zf">"Zend Framework Integration"</span> <span class="doctrine">Doctrine Team</span></h3>
+                    </div>
+                </section>
+
+                <section>
+                    <h2><span class="doctrine">Doctrine</span></h2>
+                    <h4>An incubator for persistence-oriented libraries</h4>
+                    <p class="fragment" data-fragment-index="1"><span class="doctrine">orm</span> is one of this libraries</p>
+                </section>
+
+                <section>
+                    <h4><strong class="doctrine">ORMs</strong> are another layer on top of your application</h4>
+                </section>
+
+                <section>
+                    <h4><strong class="doctrine">ORMs</strong> don't born to speed up application</h4>
+                    <h2 class="fragment" data-fragment-index="1"><span class="doctrine">ORMs</span> are SLOW</h2>
+                </section>
+
+                <section data-background="assets/said.jpg">
+                    <h2 class="fragment" data-fragment-index="1"><span class="doctrine">I said that! happy?!</span></h2>
+                </section>
+
+                <section>
+                    <h4>We know it and <span class="doctrine">doctrine</span> has its cache layers</h4>
+                </section>
+
+                <section>
+                    <h2><a href=""><span class="doctrine">doctrine</span>\cache</a></h2>
+                    <p>it is a stand alone projec to manage cache</p>
+                    <div class="fragment" data-fragment-index="2">
+                        <p><span class="doctrine">fetch($id)</span> - fetches an entry from the cache</p>
+                        <p><span class="doctrine">contains($id)</span> - test if an entry exists in the cache</p>
+                        <p><span class="doctrine">save($id, $data, $lifetime)</span> - puts data into the cache</p>
+                        <p><span class="doctrine">delete($id)</span> - deletes a cache entry</p>
+                    </div>
+                </section>
+
+                <section>
+                    <h2><span class="doctrine"><a href="">doctrine</span>\cache</a></h2>
+                    <p>it supports different adapters</p>
+                    <div class="fragment" data-fragment-index="2">
+                        <p>APC</p>
+                        <p>Memcache</p>
+                        <p>Memcached</p>
+                        <p>Redis</p>
+                        <p>Your implementation</p>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>ORM structure</h2>
+                    <p class="fragment shrink highlight-blue" data-fragment-index="0">EntityManager</p>
+                    <p class="fragment shrink highlight-blue" data-fragment-index="1">UnitOfWork</p>
+                    <p class="fragment grow highlight-red" data-fragment-index="2">Metadata Drivers</p>
+                    <p class="fragment grow highlight-red" data-fragment-index="3">DQL</p>
+                    <p class="fragment shrink highlight-blue" data-fragment-index="4">Repositories</p>
+                    <p class="fragment grow highlight-red" data-fragment-index="5">Second Level Cache</p>
+                </section>
+
+                <section>
+                    <h2><span class="doctrine">Metadata Cache</span></h2>
+                    <p class="fragment" data-fragment-index="1">
+                    Caches the bootstrap information
+                    </p>
+                    <pre><code data-trim class="fragment" data-fragment-index="1" lang="yml">
+# app/config/config.yml
+doctrine_cache:
+  providers:
+    metadata_cache:
+      aliases: [doctrine.orm.default_metadata_cache]
+      file_system:
+        directory: "%kernel.cache_dir%/doctrine/metadata"
+    orm:
+        metadata_cache_driver:
+            cache_provider: metadata_cache
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h2><span class="doctrine">Query Cache</span></h2>
+                    <p class="fragment" data-fragment-index="1">
+                    Caches the transformation of a DQL query to its SQL counterpart.
+                    </p>
+                    <pre><code data-trim class="fragment" data-fragment-index="1" lang="yml">
+# app/config/config.yml
+doctrine_cache:
+  providers:
+    query_cache:
+      aliases: [doctrine.orm.default_metadata_cache]
+      file_system:
+        directory: "%kernel.cache_dir%/doctrine/metadata"
+    orm:
+        query_cache_driver:
+            cache_provider: query_cache
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h2><span class="doctrine">Result Cache</span></h2>
+                    <pre><code data-trim class="fragment" data-fragment-index="1" lang="php">
+$usersCount = $entityManager
+    ->createQuery('SELECT COUNT(u) FROM User u')
+    ->useResultCache(true)
+    ->setResultCacheId('count_user');
+    ->setResultCacheLifeTime(7200)
+    ->getResult();
+                    </code></pre>
+                <p class="fragment" data-fragment-index="2">Cache ID dependes from query and PARAMS!</p>
+                </section>
+
+                <section>
+                    <h2><span class="doctrine">Second Level Cache</span></h2>
+                    <img  src="assets/party.gif" />
+                    <p class="fragment" data-fragment-index="2">Doctrine >= 2.5</p>
+                </section>
+
+                <section>
+                    <h2><span class="doctrine">Second Level Cache</span></h2>
+                    <p>The Second Level Cache is designed to reduce the amount of necessary database access</p>
+                    <p class="fragment" data-fragment-index="1">Tries to reduce the gap between SQL and NoSQL database</p>
+                </section>
+
+                <section data-background="assets/300.jpg">
+                    <h2><span class="doctrine">Second Level Cache</span></h2>
+                    <p><strong>Reduce gap?!</strong></p>
+                    <pre class="fragment" data-fragment-index="1"><code>
+
+App\FetchSingleEvent
+    Method Name   Iterations   Average Time      Ops/second
+    ------------ ------------ ----------------- -------------
+    withMongoDB: [     1,000] [0.0002727243900] [3,666.70542]
+    withMySQL  : [     1,000] [0.0003448197842] [2,900.06562]
+
+                    </code></pre>
+                </section>
+
+                <section>
+                    img
+                </section>
+                <section>
+                    img
+                </section>
+
+                <section>
+                    <h2><span class="doctrine">Second Level Cache</span></h2>
+                    <p class="fragment" data-fragment-index="1">The <span class="doctrine">ORM</span> persist an entity into the database and in cache</p>
+                    <p class="fragment" data-fragment-index="2">Tries to load it from cache first</p>
+                </section>
+
+                <section>
+                    <h2><span class="doctrine">Second Level Cache</span></h2>
+                    <p><strong>Region</strong></p>
+                    <p  class="fragment" data-fragment-index="1">
+                    Every region can store queries, entities and collections with own configurations (eg. lifetime, provider)
+                    </p>
+                </section>
+
+                <section>
+                    <h2><span class="doctrine">Second Level Cache</span></h2>
+                    <p><strong>Caching mode</strong></p>
+                    <p>Strategy to cache your entities</p>
+                    <div class="fragment" data-fragment-index="2">
+                        <p>READ_ONLY: Perfect for immutable data, simple to manage.</p>
+                        <p>READ_WRITE: doctrine locks the cache internally</p>
+                        <p>NONSTRICT_READ_WRITE: perfect for sites with rare updates, no lock</p>
+                    </div>
+                </section>
+
+                <section>
+                    <h2><span class="doctrine">Second Level Cache</span></h2>
+                    <p><strong>Caching mode</strong></p>
+                    <p>Strategy to cache your entities</p>
+                    <div class="fragment" data-fragment-index="2">
+                        <p>READ_ONLY: Perfect for immutable data, simple to manage.</p>
+                        <p>READ_WRITE: doctrine locks the cache internally</p>
+                        <p>NONSTRICT_READ_WRITE: perfect for sites with rare updates, no lock</p>
+                    </div>
+                </section>
+
+                <section>
+                    <h2><span class="doctrine">Second Level Cache</span></h2>
+                    <p><strong>Symfony Conf</strong></p>
+                    <pre><code lang="yml">
+orm:
+    entity_managers:
+        defualt:
+            second_level_cache:
+                region_cache_driver:
+                    type:                 array
+                    host:                 ~
+                    port:                 ~
+                    instance_class:       ~
+                    class:                ~
+                    id:                   ~
+                    namespace:            ~
+                    cache_provider:       ~
+                region_lock_lifetime: 60
+                log_enabled:          true
+                region_lifetime:      0
+                enabled:              true
+                factory:              ~
+                regions:
+                    first_region:
+                        cache_driver:
+                            type:                 array
+                            host:                 ~
+                            port:                 ~
+                            instance_class:       ~
+                            class:                ~
+                            id:                   ~
+                            namespace:            ~
+                            cache_provider:       ~
+                        lock_path:            '%kernel.cache_dir%/doctrine/orm/slc/filelock'
+                        lock_lifetime:        60
+                        type:                 default
+                        lifetime:             0
+                        service:              ~
+                        name:                 ~
+                </code></pre>
+                </section>
+
+                <section>
+                    <h2><span class="doctrine">Second Level Cache</span></h2>
+                    <p><strong>Entity Mapping</strong></p>
+                    <pre><code lang="php">
+/**
+ * @Entity
+ * @Cache(usage="READ_ONLY", region="first_region")
+ */
+class Country
+{
+}
+                    </code></pre>
+                </section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: false,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'concave', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+          { src: "bower_components/jquery/dist/jquery.js" },
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'bower_components/corley-presenter/presenter.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
