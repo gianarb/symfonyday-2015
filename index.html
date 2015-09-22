@@ -207,16 +207,14 @@ App\FetchSingleEvent
                 </section>
 
                 <section>
-                    img
-                </section>
-                <section>
-                    img
-                </section>
-
-                <section>
                     <h2><span class="doctrine">Second Level Cache</span></h2>
                     <p class="fragment" data-fragment-index="1">The <span class="doctrine">ORM</span> persist an entity into the database and in cache</p>
                     <p class="fragment" data-fragment-index="2">Tries to load it from cache first</p>
+                </section>
+
+                <section data-background="assets/doctrine-sls-out.png">
+                </section>
+                <section data-background="assets/doctrine-sls-in.png">
                 </section>
 
                 <section>
@@ -225,17 +223,6 @@ App\FetchSingleEvent
                     <p  class="fragment" data-fragment-index="1">
                     Every region can store queries, entities and collections with own configurations (eg. lifetime, provider)
                     </p>
-                </section>
-
-                <section>
-                    <h2><span class="doctrine">Second Level Cache</span></h2>
-                    <p><strong>Caching mode</strong></p>
-                    <p>Strategy to cache your entities</p>
-                    <div class="fragment" data-fragment-index="2">
-                        <p>READ_ONLY: Perfect for immutable data, simple to manage.</p>
-                        <p>READ_WRITE: doctrine locks the cache internally</p>
-                        <p>NONSTRICT_READ_WRITE: perfect for sites with rare updates, no lock</p>
-                    </div>
                 </section>
 
                 <section>
@@ -305,6 +292,24 @@ class Country
                     </code></pre>
                 </section>
 
+                <section>
+                    <h2><span class="doctrine">Caching</span></h2>
+                    <blockquote>
+                        <p>There are only two hard things in Computer Science: cache
+                        invalidation and naming things.</p>
+                        <p class="quote-attribution">-- Phil Karlton</p>
+                    </blockquote>
+                </section>
+
+                <section>
+                    <h2><span class="doctrine">Caching</span></h2>
+                    <p>cache configuration is your responsability, it doesn't know the application flow</p>
+                </section>
+
+                <section>
+                    <h3>Thanks!</h3>
+                    <p><a href="https://github.com/gianarb">github.com/gianarb</a></p>
+                </section>
 			</div>
 
 		</div>
