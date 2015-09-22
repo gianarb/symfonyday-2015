@@ -121,6 +121,62 @@
 
                 <section>
                     <h2>ORM structure</h2>
+                    <h3>EntityManager</h3>
+                    <p>It is a bridge between object oriented and relational world</p>
+                    <p>It is a ServiceLocator for your repositories</p>
+                </section>
+
+                <section>
+                    <h2>ORM structure</h2>
+                    <h3>UnitOfWork</h3>
+                    <p>UoW leave between two flush</p>
+                    <pre><code lang="php">
+$user = new User;
+$user->setName('Mr.Right');
+$em->persist($user);
+
+$user = new User;
+$user->setName('Mr.Left');
+$em->persist($user);
+
+$em->flush();
+                    </code></pre>
+                    <p class="fragment" data-fragment-index="2">UoW is transaction, if <span class="doctrine"></span> it isn't valid spear exception and a rollback</p>
+                </section>
+                <section>
+                    <h2>ORM structure</h2>
+                    <h3>Metadata Drivers</h3>
+                </section>
+
+                <section>
+                    <h2>ORM structure</h2>
+                    <h3>DQL</h3>
+                    <p><strong>Doctrine Query Language</strong></p>
+                    <pre><code>
+$query = $em->createQuery('
+    SELECT u
+    FROM ForumUser u
+    WHERE (u.username = :name OR u.username = :name2)
+        AND u.id = :id'
+);
+$query->setParameters(array(
+    'name' => 'Bob',
+    'name2' => 'Alice',
+    'id' => 321,
+));
+$users = $query->getResult();
+                    </code></pre>
+                    <p class="fragment" data-fragment-index="1">provide querying capabilities over your objects</p>
+                </section>
+
+                <section>
+                    <h2>ORM structure</h2>
+                    <h3>Repositories</h3>
+                    <p>They are services</p>
+                </section>
+
+                <section>
+                    <h2>ORM structure</h2>
                     <p class="fragment shrink highlight-blue" data-fragment-index="0">EntityManager</p>
                     <p class="fragment shrink highlight-blue" data-fragment-index="1">UnitOfWork</p>
                     <p class="fragment grow highlight-red" data-fragment-index="2">Metadata Drivers</p>
