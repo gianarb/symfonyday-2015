@@ -256,13 +256,12 @@ $usersCount = $entityManager
                     <h2><span class="doctrine">Second Level Cache</span></h2>
                     <p class="well"><strong>Reduce gap?!</strong></p>
                     <pre class="fragment" data-fragment-index="1"><code>
-
 App\FetchSingleEvent
     Method Name   Iterations   Average Time      Ops/second
     ------------ ------------ ----------------- -------------
-    withMongoDB: [     1,000] [0.0002727243900] [3,666.70542]
-    withMySQL  : [     1,000] [0.0003448197842] [2,900.06562]
-
+    withMongoDB: [     1,000] [0.0002602758408] [3,842.07769]
+    withMySQL  : [     1,000] [0.0003527779579] [2,834.64422]
+    withMySqli : [     1,000] [0.0003824789524] [2,614.52295]
                     </code></pre>
                 </section>
 
