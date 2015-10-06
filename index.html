@@ -71,7 +71,7 @@
 				</section>
 
 				<section data-background="#fff">
-					<h2>Who I am?</h2>
+					<h2>Who am I?</h2>
 					<h2 class="fragment" data-fragment-index="1">Gianluca Arbezzano</h2>
                     <h4 class="fragment" data-fragment-index="1"><i class="fa fa-twitter"></i><i class="fa fa-github"></i>@gianarb</h4>
 					<h4 class="fragment" data-fragment-index="2">from CorleyCloud</h4>
@@ -81,44 +81,47 @@
                 <section data-background="assets/evil.jpg">
                     <div  style="">
                         <h1 style="font-size:4.5em;text-shadow:0px 0px 2px #000">I'm the Enemy</h1>
-                        <h3  class="fragment shadow well">Member of <span class="zf">"Zend Framework Integration"</span> <span class="doctrine">Doctrine Team</span></h3>
+                        <h3  class="fragment shadow well">
+                            <p>Member of:</p>
+                            <p><span class="zf">Zend Framework Integration</span></p>
+                            <p><span class="doctrine">Doctrine Team</span></p>
+                        </h3>
                     </div>
                 </section>
 
                 <section>
                     <h2><span class="doctrine">Caching</span></h2>
-                    <blockquote>
+                    <blockquote style="text-align:left;font-style:normal;">
                         <p>There are only two hard things in Computer Science: cache
                         invalidation and naming things.</p>
-                        <p class="quote-attribution">-- Phil Karlton</p>
+                        <p>-- Phil Karlton</p>
                     </blockquote>
                 </section>
 
                 <section>
                     <h2><span class="doctrine">Doctrine</span></h2>
                     <h4>An incubator for persistence-oriented libraries</h4>
-                    <p class="fragment" data-fragment-index="1"><span class="doctrine">orm</span> is one of this libraries</p>
+                    <p class="fragment" data-fragment-index="1"><span class="doctrine">ORM</span> is one of this libraries</p>
                 </section>
 
                 <section>
-                    <h4><strong class="doctrine">ORMs</strong> are another layer on top of your application</h4>
+                    <h4><strong class="doctrine">ORMs</strong> are another layer of your application</h4>
                 </section>
 
                 <section>
-                    <h4><strong class="doctrine">ORM's</strong> weren’t born to speed up applications</h4>
-                    <h2 class="fragment" data-fragment-index="1"><span class="doctrine">ORMs</span> are SLOW</h2>
+                    <h2><span class="doctrine">ORMs</span> are SLOW</h2>
+                    <h4 class="fragment" data-fragment-index="1"><strong class="doctrine">ORM's</strong> weren’t born to speed up applications</h4>
                 </section>
 
                 <section data-background="assets/said.jpg">
-                    <h2 class="fragment well" style="margin-top:-200px" data-fragment-index="1"><span class="doctrine">I said that! happy?!</span></h2>
                 </section>
 
                 <section>
-                    <h4>We know it and <span class="doctrine">doctrine</span> has its cache layers</h4>
+                    <h4>This is why <span class="doctrine">doctrine</span> is built with cache layers.</h4>
                 </section>
 
                 <section>
-                    <h2><a href=""><span class="doctrine">doctrine</span>\cache</a></h2>
+                    <h2><a href="https://github.com/doctrine/cache"><span class="doctrine">doctrine</span>\cache</a></h2>
                     <p>it is a standalone projec to manage cache</p>
                     <div class="fragment" data-fragment-index="2">
                         <p><span class="doctrine">fetch($id)</span> - fetches an entry from the cache</p>
@@ -129,7 +132,7 @@
                 </section>
 
                 <section>
-                    <h2><span class="doctrine"><a href="">doctrine</span>\cache</a></h2>
+                    <h2<a href="https://github.com/doctrine/cache"><span class="doctrine">doctrine</span>\cache</a></h2>
                     <p>it supports different adapters</p>
                     <div class="fragment" data-fragment-index="2">
                         <p>APC</p>
@@ -208,9 +211,9 @@ $users = $query->getResult();
                 </section>
 
                 <section>
-                    <h2><span class="doctrine">Metadata Cache</span></h2>
+                    <h2><span class="doctrine">Caches metadata</span></h2>
                     <p class="fragment" data-fragment-index="1">
-                    Caches the bootstrap information
+                        data about your data structure
                     </p>
                     <pre><code data-trim class="fragment" data-fragment-index="1" lang="yml">
 # app/config/config.yml
@@ -285,8 +288,8 @@ App\FetchSingleEvent
 
                 <section>
                     <h2><span class="doctrine">Second Level Cache</span></h2>
-                    <p class="fragment" data-fragment-index="1">The <span class="doctrine">ORM</span> persist an entity into the database and in cache</p>
-                    <p class="fragment" data-fragment-index="2">Tries to load it from cache first</p>
+                    <p class="fragment" data-fragment-index="1">The <span class="doctrine">ORM</span> tries to load an entity from the cache first</p>
+                    <p class="fragment" data-fragment-index="2">If it is not there, it fetches from the database, then caches the entity</p>
                 </section>
 
                 <section data-background="assets/doctrine-sls-out.png">
@@ -298,14 +301,17 @@ App\FetchSingleEvent
                     <h2><span class="doctrine">Second Level Cache</span></h2>
                     <p><strong>Region</strong></p>
                     <p  class="fragment" data-fragment-index="1">
-                    Every region can store queries, entities and collections with own configurations (eg. lifetime, provider)
+                    Second level cache is organized into regions - each region has its own namespace and lifetime parameters
+                    </p>
+                    <p  class="fragment" data-fragment-index="2">
+                    Each entity is assigned to a region
                     </p>
                 </section>
 
                 <section>
                     <h2><span class="doctrine">Second Level Cache</span></h2>
                     <p><strong>Caching mode</strong></p>
-                    <p>Strategy to cache your entities</p>
+                    <p>Defines how your entities are cached</p>
                     <div class="fragment" data-fragment-index="2">
                         <p>READ_ONLY: Perfect for immutable data, simple to manage.</p>
                         <p>READ_WRITE: doctrine locks the cache internally</p>
@@ -352,11 +358,11 @@ App\FetchSingleEvent
                 <section>
                     <h3>I can not control my strength</h3>
                     <p class="fragment" data-fragment-index="1">Are you sure that is all a problem of time?</p>
-                    <p class="fragment" data-fragment-index="2">it isn't all gold everything that shines</p>
+                    <p class="fragment" data-fragment-index="2">not all that glitters is gold</p>
                 </section>
 
                 <section>
-                    <h2><span class="doctrine">Warning</span></h2>
+                    <h2><span class="doctrine">it's not magic</span></h2>
                     <p>cache configuration is your responsability, it doesn't know the application flow<span class="doctrine"><i class="fa fa-exclamation"></i></span></p>
                 </section>
 
