@@ -320,6 +320,31 @@ App\FetchSingleEvent
                 </section>
 
                 <section>
+                    <h2>Result cache row</h2>
+                    <p>it something like this</p>
+                    <pre><code data-trim>
+[
+    "from Person as p where p.parent.id=? and p.firstName=?",
+    [ 1 , "Joey"] ] -> [  2 ]
+]
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h2>Slc row</h2>
+                    <p data-fragment="1" class="fragment">it caches only entity identifier and values</p>
+                    <pre><code data-trim>
+[
+  'region_name:entity_1_hash' => [
+    'id'=> 1,
+    'name' => 'FooBar',
+    'associationName'=>null
+  ]
+];
+                    </code></pre>
+                </section>
+
+                <section>
                     <p>This is our use case</p>
                     <img class="back-white" src="assets/db.png">
                 </section>
@@ -401,6 +426,12 @@ App\FetchSingleEvent
 					{ src: 'plugin/notes/notes.js', async: true }
 				]
 			});
+              Reveal.configure({
+                keyboard: {
+                  38: "prev",
+                  40: "next"
+                }
+              });
 
 		</script>
         <script>
